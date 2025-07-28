@@ -1,0 +1,141 @@
+// SOLID Principles in Java
+
+/*
+The SOLID principles are five key design principles in object-oriented programming that help developers create software that is:
+
+- Maintainable
+- Scalable
+- Flexible
+- Testable
+*/
+
+// --- S – Single Responsibility Principle (SRP) ---
+// A class should have only one reason to change.
+
+class InvoicePrinter {
+    public void printInvoice(Invoice invoice) {
+        // logic to print invoice
+    }
+}
+
+class InvoicePersistence {
+    public void saveToFile(Invoice invoice) {
+        // logic to save invoice
+    }
+}
+
+// Each class has a single responsibility — printing and saving separately.
+
+
+// --- O – Open/Closed Principle (OCP) ---
+// Software entities should be open for extension, but closed for modification.
+
+interface Discount {
+    double apply(double price);
+}
+
+class FestivalDiscount implements Discount {
+    public double apply(double price) {
+        return price * 0.90;
+    }
+}
+
+class NewUserDiscount implements Discount {
+    public double apply(double price) {
+        return price * 0.80;
+    }
+}
+
+// You can add more discount types without changing existing logic.
+
+
+// --- L – Liskov Substitution Principle (LSP) ---
+// Subtypes should be substitutable for their base types without breaking behavior.
+
+class Bird {
+    void fly() {}
+}
+
+class Ostrich extends Bird {
+    void fly() {
+        throw new UnsupportedOperationException();
+    }
+}
+
+// Ostrich violates LSP because it cannot fly like a Bird.
+
+// Fix with composition or separate interfaces:
+interface Bird {}
+
+interface Flyable {
+    void fly();
+}
+
+
+// --- I – Interface Segregation Principle (ISP) ---
+// Clients should not be forced to depend on interfaces they do not use.
+
+interface Worker {
+    void work();
+    void eat(); // Not needed for some implementers
+}
+
+class Robot implements Worker {
+    public void work() {}
+    public void eat() {} // Not required for Robot
+}
+
+// Better Design
+interface Workable {
+    void work();
+}
+
+interface Eatable {
+    void eat();
+}
+
+class ImprovedRobot implements Workable {
+    public void work() {}
+}
+
+
+// --- D – Dependency Inversion Principle (DIP) ---
+// High-level modules should not depend on low-level modules.
+// Both should depend on abstractions (interfaces).
+
+interface NotificationService {
+    void send(String message);
+}
+
+class EmailService implements NotificationService {
+    public void send(String message) {
+        // send email
+    }
+}
+
+class OrderProcessor {
+    private NotificationService notifier;
+
+    public OrderProcessor(NotificationService notifier) {
+        this.notifier = notifier;
+    }
+
+    public void processOrder() {
+        // logic
+        notifier.send("Order confirmed!");
+    }
+}
+
+
+// --- Summary Table ---
+
+/*
+| Principle | Focus                  | Benefit              |
+|-----------|------------------------|----------------------|
+| S         | Single Responsibility | Easier to maintain   |
+| O         | Open/Closed           | Easy to extend       |
+| L         | Liskov Substitution   | Safe inheritance     |
+| I         | Interface Segregation | No unnecessary code  |
+| D         | Dependency Inversion  | Loosely coupled code |
+*/
+
