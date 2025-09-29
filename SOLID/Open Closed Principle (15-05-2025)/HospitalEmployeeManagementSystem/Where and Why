@@ -1,0 +1,65 @@
+where exactly implements open for execution and closed for modification?
+
+Let’s pinpoint exactly where your code implements the Open/Closed Principle (OCP).
+
+🔁 Open for Extension
+Your code is open for extension in the following way:
+
+You can add new device types (new classes) without changing existing code.
+
+Example:
+java
+Copy
+Edit
+public class SmartLight implements RemoteControl {
+    @Override
+    public void turningOn() {
+        System.out.println("SmartLight Turning On");
+    }
+
+    @Override
+    public void turningOff() {
+        System.out.println("SmartLight Turning Off");
+    }
+}
+You extend the behavior by adding SmartLight, and everything still works.
+
+Then, in Person.java, you just do:
+
+java
+Copy
+Edit
+DeviceController light = new DeviceController(new SmartLight());
+light.execute();
+No need to modify RemoteControl, Tv, Projector, SurroundSoundSystem, or DeviceController.
+
+✅ That’s extension without modification.
+
+❌ Closed for Modification
+Your existing code does not need to be modified when:
+
+You add a new device
+
+You want different behavior (as long as it's encapsulated in a new class)
+
+For example, DeviceController works without knowing the exact type of device:
+
+java
+Copy
+Edit
+public class DeviceController {
+    private RemoteControl remoteControl;
+
+    public DeviceController(RemoteControl remoteControl) {
+        this.remoteControl = remoteControl;
+    }
+
+    public void execute() {
+        remoteControl.turningOn();
+        remoteControl.turningOff();
+    }
+}
+This class never changes regardless of how many RemoteControl implementations you create.
+
+That’s exactly what closed for modification means:
+🚫 Don’t change existing code → ✅ Just add new classes
