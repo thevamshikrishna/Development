@@ -1,0 +1,3 @@
+interface CourseInstructor{
+    void teach();
+}

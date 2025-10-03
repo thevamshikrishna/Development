@@ -1,0 +1,24 @@
+Youtube Resource: https://www.youtube.com/playlist?list=PLVz2XdJiJQxwpWGoNokohsSW2CysI6lDc
+Nataraj Lecturer: https://www.youtube.com/watch?v=8odBZ3Zvcx8&list=PLdSsYRVSXMZID8smMPbaqeEKRgkMlLhca
+
+Reffered this before learning Kafka: https://kafka.apache.org/uses
+
+-------------------------------------------------------------------------------------------
+Day 11 - Spring Boot Security By Nataraj Sir [Video Number: 221]
+
+Messaging (Communication using messages)
+
+a) Synchonous Communication
+
+Client app should wait for given request's - response from Server App then it perform client operation.
+By-default all Client -server Communications are synchronous communications.
+
+ex: login 
+
+b) Asynchonous Communication
+
+Client App is free (not blocked) to generate the next request o to perform client side operations without waiting for the given request
+related response from server App.
+
+ex: 
+- chatting and doing another operation
