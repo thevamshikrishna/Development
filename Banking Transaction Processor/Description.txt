@@ -1,0 +1,22 @@
+🏦 3. Banking Transaction Processor (Console App)
+🧠 Concepts Covered
+
+Core Java 8 features: Streams, Optional, Method References
+
+Collections: Maps for accounts, Lists for transactions
+
+Multithreading: Multiple threads processing transactions simultaneously
+
+Concurrency: Thread-safe balance updates using locks or atomic variables
+
+OOP: Classes like Account, Transaction, TransactionProcessor
+
+DSA: Queues for pending transactions, sorting/filtering using algorithms
+
+💡 Example Features
+
+Multiple threads handle deposit/withdraw/transfer requests.
+
+Prevent race conditions and inconsistent balances.
+
+Generate transaction history and daily summary reports.

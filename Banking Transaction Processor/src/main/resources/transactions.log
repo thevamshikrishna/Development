@@ -1,0 +1,3 @@
+[2025-10-08 16:06:03] TransactionID=bcab2b9d-45fe-4e8e-92a1-d31ecea9ecf8 | Type=DEPOSIT | From=null | To=1000 | Amount=200.00
+[2025-10-08 16:06:03] TransactionID=588e2e09-be8c-4b33-9184-88512591f6cc | Type=WITHDRAWAL | From=1000 | To=null | Amount=100.00
+[2025-10-08 16:06:03] TransactionID=6ae87f56-ec23-418c-b143-1acb6b9514e6 | Type=TRANSFER | From=1000 | To=1001 | Amount=150.00
