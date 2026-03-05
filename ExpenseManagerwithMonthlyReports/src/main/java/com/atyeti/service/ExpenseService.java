@@ -9,19 +9,18 @@ import java.time.LocalDate;
 import java.util.*;
 import java.util.concurrent.*;
 
-import static com.atyeti.util.ExpenseUtils.FILE_PATH;
 
 public class ExpenseService implements IExpenseService{
 
-    public List<Expense> readDirectory() {
-        File folder = new File(FILE_PATH);
+    public List<Expense> readDirectory(String property) {
+        File folder = new File(property);
         File[] files = folder.listFiles((dir, name) -> name.endsWith(".csv"));
 
         if (files == null || files.length == 0) {
             throw new NoFileFoundException("No CSV files found in directory.");
         }
 
-        ExecutorService executor = Executors.newFixedThreadPool(files.length);
+        ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
         List<Future<List<Expense>>> futures = new ArrayList<>();
 
         for (File file : files) {
