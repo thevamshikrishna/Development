@@ -21,7 +21,10 @@ public class ExpenseService implements IExpenseService{
             throw new NoFileFoundException("No CSV files found in directory.");
         }
 
-        ExecutorService executor = Executors.newFixedThreadPool(files.length);
+        ExecutorService executor =
+                Executors.newFixedThreadPool(
+                        Math.min(files.length, 5)
+                );
         List<Future<List<Expense>>> futures = new ArrayList<>();
 
         for (File file : files) {
